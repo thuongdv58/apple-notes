@@ -16,6 +16,9 @@
     "@supabase/auth-ui-react": "^0.2.2",
     "@supabase/supabase-js": "^2.0.4",
     "@supabase/ui": "^0.36.5",
+    "@tiptap/react": "^2.0.0-beta.199",
+    "@tiptap/starter-kit": "^2.0.0-beta.199",
+    "classnames": "^2.3.2",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"

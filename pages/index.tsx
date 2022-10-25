@@ -9,7 +9,9 @@ const Home: NextPage = () => {
   return (
     <>
       <Header />
-      <NoteApp></NoteApp>
+      <div className="h-[calc(100vh_-_4rem)]">
+        <NoteApp></NoteApp>
+      </div>
     </>
   );
 };

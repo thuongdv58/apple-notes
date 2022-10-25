@@ -1,31 +1,23 @@
 import { useEffect, useState, createContext, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
-
-export const SignOut = async () => {
-  const supabase = useSupabaseClient()
-  await supabase.auth.signOut()
-}
+import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
 export const RequireAuth = () => {
-  const session = useSession()
+  const user = useUser()
   const router = useRouter()
 
   useEffect(() => {
-    if (!session) {
+    console.log("session",user)
+    if (!user) {
       router.push('/auth')
     }
-  }, [session, router])
+  }, [user, router])
 }
 
 export const AuthRedirect = () => {
   const session = useSession()
   const router = useRouter()
-
-  useEffect(() => {
-    if (session) {
-      router.push('/')
-    }
-  }, [session, router])
+  if (session) {
+    router.push('/')
+  }
 }
-

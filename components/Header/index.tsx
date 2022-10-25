@@ -1,10 +1,8 @@
-import React from "react";
-import { Disclosure } from "@headlessui/react";
-import { useSession } from "@supabase/auth-helpers-react";
-import { default as HeadContainer } from "next/head";
-import ProfileMenu from "./profileMenu";
-import LoginButton from "./loginButton";
-import { useUser } from "@supabase/auth-ui-react/dist/esm/src/components/Auth/UserContext";
+import React from 'react'
+import { default as HeadContainer } from 'next/head'
+import ProfileMenu from './profileMenu'
+import LoginButton from './loginButton'
+import { useUser } from '@supabase/auth-helpers-react'
 
 export default function Header() {
   return (
@@ -30,5 +28,5 @@ export default function Header() {
         </div>
       </div>
     </>
-  );
+  )
 }

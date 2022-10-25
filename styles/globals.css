@@ -3,5 +3,49 @@
 @tailwind utilities;
 
 body {
-  background: #181818;
+  /* background: #181818; */
+}
+
+/* authentication form style */
+
+.auth-container a {
+  color: #8b5cf6 !important;
+}
+
+.auth-container button[type='submit'] {
+  background: #8b5cf6 !important;
+  border-color: #646464 !important;
+}
+
+.auth-container input:focus {
+  border-color: #8b5cf6 !important;
+}
+.auth-container input {
+  border: 1px #646464 solid !important;
+}
+
+.auth-container .sbui-typography-text-danger {
+  top: 3px !important;
+  position: absolute !important;
+}
+
+/* custom scroll bar for notes */
+.scrollbar::-webkit-scrollbar {
+  width: .375rem!important;
+  height: 0rem!important;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  --tw-bg-opacity: 1!important;
+    background-color: rgb(203 213 225/var(--tw-bg-opacity))!important;
+    border-radius: 0.25rem!important;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    --tw-bg-opacity: 1!important;
+    background-color: rgb(241 245 249/var(--tw-bg-opacity))!important;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    border-radius: 0.25rem!important;
 }
