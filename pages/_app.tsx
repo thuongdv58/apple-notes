@@ -3,6 +3,7 @@ import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
 import { useUser } from '@supabase/auth-ui-react/dist/esm/src/components/Auth/UserContext'
 import { AppProps } from 'next/app'
 import { useState } from 'react'
+import { RequireAuth, RouteGuard } from '../hooks/authUser'
 import '../styles/globals.css'
 
 function MyApp({
@@ -12,14 +13,16 @@ function MyApp({
   initialSession: Session
 }>) {
   const [supabaseClient] = useState(() => createBrowserSupabaseClient())
-  
+  // RequireAuth()
   return (
-    <main className='dark'>
+    <main>
       <SessionContextProvider
         supabaseClient={supabaseClient}
         initialSession={pageProps.initialSession}
       >
-        <Component {...pageProps} />
+        <RouteGuard>
+          <Component {...pageProps} />
+        </RouteGuard>
       </SessionContextProvider>
     </main>
   )

@@ -3,11 +3,15 @@ import { Menu, Transition } from '@headlessui/react'
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import classNames from 'classnames'
+import { useRouter } from 'next/router'
 
 const ProfileMenu = () => {
   const supabase = useSupabaseClient()
-  const logout = () => {
-    supabase.auth.signOut()
+  const router = useRouter()
+
+  const logout = async () => {
+    await supabase.auth.signOut()
+    router.reload()
   }
   return (
     <Menu as="div" className="ml-3 relative">

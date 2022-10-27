@@ -2,10 +2,10 @@ import Header from "../components/Header";
 import type { NextPage } from "next";
 import { RequireAuth } from "../hooks/authUser";
 import NoteApp from "../components/NoteApp";
+import { withPageAuth } from "@supabase/auth-helpers-nextjs";
 
 const Home: NextPage = () => {
-  RequireAuth();
-
+  //RequireAuth();
   return (
     <>
       <Header />
@@ -17,3 +17,4 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+export const getServerSideProps = withPageAuth({ redirectTo: '/auth' })

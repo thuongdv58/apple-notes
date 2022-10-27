@@ -1,75 +1,37 @@
-const SideBar = () => {
-  const notes = [{
-    title: 'title long title tlong vl long vccc long',
-    content: 'content long vl content ne',
-    created_at: new Date(),
-    updated_at: new Date(),
-  },
-  {
-    title: 'title',
-    content: 'content',
-    created_at: new Date(),
-    updated_at: new Date(),
-  },
-  {
-    title: 'title',
-    content: 'content',
-    created_at: new Date(),
-    updated_at: new Date(),
-  },
-  {
-    title: 'title',
-    content: 'content',
-    created_at: new Date(),
-    updated_at: new Date(),
-  },{
-    title: 'title',
-    content: 'content',
-    created_at: new Date(),
-    updated_at: new Date(),
-  },
-  {
-    title: 'title',
-    content: 'content',
-    created_at: new Date(),
-    updated_at: new Date(),
-  },
-  {
-    title: 'title',
-    content: 'content',
-    created_at: new Date(),
-    updated_at: new Date(),
-  },
-  {
-    title: 'title',
-    content: 'content',
-    created_at: new Date(),
-    updated_at: new Date(),
-  },
-  {
-    title: 'title lon',
-    content: 'content',
-    created_at: new Date(),
-    updated_at: new Date(),
-  }]
+import classNames from 'classnames'
+import { useEffect, useState } from 'react'
+
+const SideBar = ({ notes, selectNote, selectedNoteId }: any) => {
+  const onSelect = (id: number) => {
+    selectNote(id)
+  }
+
   return (
     <>
-    {
-      notes.map(note => <div className="bg-slate-100 rounded-md hover:bg-slate-500 h-24 m-3">
-        <div className="font-bold text-xl mx-5 pt-5 truncate">
-          {note.title}
+      {notes.map((note: any) => (
+        <div
+          className={classNames(
+            note.id === selectedNoteId ? 'bg-slate-500' : '',
+            'bg-slate-100 rounded-md hover:bg-slate-500 h-24 m-3 cursor-pointer'
+          )}
+          onClick={() => onSelect(note.id)}
+          key={note.id}
+        >
+          <div className="font-bold text-xl mx-5 pt-5 truncate">
+            {note.title}
+          </div>
+          <div className="mx-5 pt-1 truncate">
+            <span>
+              {new Date(note.updated_at).toLocaleString('en-US', {
+                timeStyle: 'short',
+                dateStyle: 'short'
+              })}
+            </span>
+            &nbsp;&nbsp;
+            <span>{note.content.replace(/<[^>]+>/g, '')}</span>
+          </div>
         </div>
-        <div className="mx-5 pt-1 truncate">
-          <span>
-            {note.updated_at.toLocaleString("en-US", { timeStyle: 'short', dateStyle: 'short'})}
-          </span>
-          &nbsp;&nbsp;
-          <span>
-            {note.content}
-          </span>
-        </div>
-      </div>)
-    }
+      ))}
     </>
   )
 }

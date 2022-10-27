@@ -1,9 +1,12 @@
 import React from 'react'
-import Header from '../components/Header'
+import { RequireAuth } from '../hooks/authUser'
 import { Card, Typography, Space } from '@supabase/ui'
-import { useUser } from '@supabase/auth-helpers-react'
+import Header from '../components/Header'
+import { useSession, useUser } from '@supabase/auth-helpers-react'
+import { withPageAuth } from '@supabase/auth-helpers-nextjs'
 
 export default function Profile() {
+  //RequireAuth()
   const user = useUser()
 
   return (
@@ -22,3 +25,6 @@ export default function Profile() {
     </>
   )
 }
+
+export const getServerSideProps = withPageAuth({ redirectTo: '/auth' })
+
